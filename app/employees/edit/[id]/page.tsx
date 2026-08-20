@@ -74,7 +74,12 @@ export default function EditEmployee({
       setFirstName(currentEmployee.firstName);
       setLastName(currentEmployee.lastName);
       setAge(currentEmployee.age);
-      setGender(currentEmployee.gender);
+      setGender(
+        currentEmployee.gender
+          ? currentEmployee.gender.charAt(0).toUpperCase() +
+              currentEmployee.gender.slice(1).toLowerCase()
+          : ""
+      );
       setEmail(currentEmployee.email);
       setPhone(currentEmployee.phone ?? "");
       setAddress(currentEmployee.address.address);
@@ -121,7 +126,7 @@ export default function EditEmployee({
           email,
           phone,
           age: Number(age),
-          gender,
+          gender: gender.toLowerCase(),
           address: {
             ...employee.address,
             address,
@@ -193,7 +198,7 @@ export default function EditEmployee({
             email,
             phone,
             age: Number(age),
-            gender,
+            gender: gender.toLowerCase(),
             address: {
               ...employee.address,
               address,
